@@ -74,8 +74,10 @@ Discrete-time iterative dynamics
    <td>
 <ol>
 
-<li>Randomness and probability
-</li>
+Lecture 3
+<br>
+Randomness and probability
+
 </ol>
    </td>
    <td>October 28
@@ -93,8 +95,10 @@ Discrete-time iterative dynamics
    <td>
 <ol>
 
-<li>Random walks
-</li>
+Lecture 4
+<br>
+Random walks
+
 </ol>
    </td>
    <td>October 30
@@ -118,8 +122,9 @@ Discrete-time iterative dynamics
    <td>
 <ol>
 
-<li>Monte Carlo
-</li>
+Lecture 5 <br>
+Monte Carlo
+
 </ol>
    </td>
    <td>November 4
@@ -137,8 +142,9 @@ Discrete-time iterative dynamics
    <td>
 <ol>
 
-<li>Continuous probability distributions
-</li>
+Lecture 6 <br>
+Continuous probability distributions
+
 </ol>
    </td>
    <td>November 6
@@ -165,10 +171,10 @@ Discrete-time iterative dynamics
    <td>
 <ol>
 
-<li>Differentiation
-     \
 
-</li>
+Lecture 7 <br>
+Algorithmic differentiation
+
 </ol>
    </td>
    <td>November 13
@@ -185,8 +191,8 @@ Discrete-time iterative dynamics
    <td>
 <ol>
 
-<li>Applications of differentiation
- \
+Lecture 8 <br>
+Applications of differentiation
 
 </li>
 </ol>
@@ -206,10 +212,9 @@ Discrete-time iterative dynamics
    <td>
 <ol>
 
-<li>Graphs and algorithms \
+Lecture 9 <br>
+Graphs and algorithms
 
-
-</li>
 </ol>
    </td>
    <td>November 20
@@ -223,8 +228,9 @@ Discrete-time iterative dynamics
    <td>
 <ol>
 
-<li>Working with data and linear regression
-</li>
+Lecture 10 <br>
+Data and linear regression
+
 </ol>
    </td>
    <td>November 25
@@ -256,8 +262,9 @@ Discrete-time iterative dynamics
    <td>
 <ol>
 
-<li>Introduction to machine learning
-</li>
+Lecture 11 <br>
+Introduction to machine learning
+
 </ol>
    </td>
    <td>December 2
@@ -269,8 +276,9 @@ Discrete-time iterative dynamics
    <td>
 <ol>
 
-<li>Unsupervised learning: Clustering
-</li>
+Lecture 12 <br>
+Unsupervised learning: Clustering
+
 </ol>
    </td>
    <td>December 4
@@ -282,7 +290,8 @@ Discrete-time iterative dynamics
    <td>
 <ol>
 
-<li>Supervised learning: Neural networks
+Lecture 13 <br>
+Supervised learning: Neural networks
 </li>
 </ol>
    </td>
@@ -299,8 +308,8 @@ Discrete-time iterative dynamics
    <td>
 <ol>
 
-<li>Interval arithmetic
-</li>
+Lecture 14 <br>
+Interval arithmetic methods
 </ol>
    </td>
    <td>December 11
