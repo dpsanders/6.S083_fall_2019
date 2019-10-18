@@ -248,7 +248,7 @@ Data and linear regression
   </tr>
   <tr>
    <td>
-    Class cancelled (Thanksgiving travel) \
+    Class cancelled (Thanksgiving travel) 
 
    </td>
    <td>November 27
