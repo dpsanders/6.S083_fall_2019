@@ -1,23 +1,26 @@
-**6.S083 - Introduction to Computational Thinking (Common Ground)**
+# 6.S083 - Introduction to Computational Thinking (Common Ground)
 
-**Fall 2019**
+## Fall 2019
 
-**Professors: **David P. Sanders ([sandersd@mit.edu](mailto:sandersd@mit.edu)) & Alan Edelman
+Welcome to 6.S083! This is an introductory course on Computational Thinking, using the Julia programming language.
 
-Lectures: MW 1 - 2.30, room 34-301
+### Professors
+David P. Sanders ([sandersd@mit.edu](mailto:sandersd@mit.edu)) & Alan Edelman
 
-Office hours: TR 11 - 1, Julia lab, floor 7 of Stata Center (turn left from Gates building elevator)
+### Lectures
+MW 1 - 2.30, room 34-301
 
-**Evaluation:**
+### Office hours
+TR 11 - 1, Julia lab, floor 7 of Stata Center (turn left from Gates building elevator)
 
-
+### Evaluation
 
 *   5 problem sets, 20% each
 *   No final exam
 
 Problem sets consist of coding and answering questions and will be submitted online.
 
-**Syllabus: **
+### Syllabus
 
 
 <table>
@@ -25,8 +28,9 @@ Problem sets consist of coding and answering questions and will be submitted onl
    <td>
 <ol>
 
-<li>Introduction to Julia
-</li>
+Lecture 1<br>
+Introduction to Julia
+
 </ol>
    </td>
    <td>October 21
@@ -42,9 +46,11 @@ Problem sets consist of coding and answering questions and will be submitted onl
    <td>
 <ol>
 
-<li>Discrete-time iterative dynamics
-  
-</li>
+Lecture 2
+<br>
+Discrete-time iterative dynamics
+
+
 </ol>
    </td>
    <td>October 23
@@ -80,7 +86,7 @@ Problem sets consist of coding and answering questions and will be submitted onl
 <p>
 - Sampling
 <p>
-- Git and Github 
+- Git and Github
    </td>
   </tr>
   <tr>
@@ -97,7 +103,7 @@ Problem sets consist of coding and answering questions and will be submitted onl
 <p>
 - PS 2 out
    </td>
-   <td>- Building up programs 
+   <td>- Building up programs
 <p>
 - Array comprehensions
 <p>
@@ -161,7 +167,7 @@ Problem sets consist of coding and answering questions and will be submitted onl
 
 <li>Differentiation
      \
-   
+
 </li>
 </ol>
    </td>
@@ -181,7 +187,7 @@ Problem sets consist of coding and answering questions and will be submitted onl
 
 <li>Applications of differentiation
  \
-  
+
 </li>
 </ol>
    </td>
@@ -202,11 +208,11 @@ Problem sets consist of coding and answering questions and will be submitted onl
 
 <li>Graphs and algorithms \
 
-   
+
 </li>
 </ol>
    </td>
-   <td>November 20 
+   <td>November 20
    </td>
    <td>- Data structures for graphs
 <p>
@@ -276,7 +282,7 @@ Problem sets consist of coding and answering questions and will be submitted onl
    <td>
 <ol>
 
-<li>Supervised learning: Neural networks 
+<li>Supervised learning: Neural networks
 </li>
 </ol>
    </td>
