@@ -3,12 +3,14 @@
 ## Fall 2019
 
 Welcome to 6.S083! This is an introductory course on Computational Thinking, using the Julia programming language.
+It is being taught at MIT in the 2nd half of the fall 2019 semester.
 
 ### Professors
 David P. Sanders ([sandersd@mit.edu](mailto:sandersd@mit.edu)) & Alan Edelman
 
 ### Lectures
-MW 1 - 2.30, room 34-301
+MW 1 - 2.30, room 34-301.
+Start date: October 21, 2019.
 
 ### Office hours
 TR 11 - 1, Julia lab, floor 7 of Stata Center (turn left from Gates building elevator)
