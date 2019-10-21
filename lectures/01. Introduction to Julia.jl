@@ -2,10 +2,19 @@ pi = 355/113
 radius = 2.2
 area = pi*(radius**2)
 circumference = pi*(radius*2)
+###
+
+
 r = 2.2   # \scrr<TAB> for italic `r`
 area = π * r^2   # \pi<TAB>   # ^ for powers
 circumference = π * (2r)   # implicit multiplication
+###
+
+
 @show π
+###
+
+
 x = 3
 @show typeof(x)   # Int64
 
@@ -13,10 +22,19 @@ y = -3.1   # Float64
 @show typeof(y)
 
 s = "6.S083"  # String
+###
+
+
 "3" * "3"
+###
+
+
 area(r) = π * r^2
 
 A = area(1.0)
+###
+
+
 """Calculate area of circle of radius `r`."""
 function area(r)
     A = π * r^2    function
@@ -25,6 +43,9 @@ end
 
 r = 1.0
 A = area(r)  #
+###
+
+
 a = 5
 
 if a < 4
@@ -38,6 +59,9 @@ else
 end
 
 s
+###
+
+
 x = 0.0
 
 for i in 1:10
@@ -47,10 +71,25 @@ end
 
 x, (x == 1.0)
 
+###
+
+
   return n * fact2(n-1)
+###
+
+
 fact(10), fact2(10)
+###
+
+
 factorials = [fact(n) for n in 1:21]
+###
+
+
 fact(big(30))
+###
+
+
 function towers(n, from, to, spare)
     n == 1 && return [ (from, to) ]
 
@@ -60,20 +99,35 @@ function towers(n, from, to, spare)
 end
 
 towers(4, 1, 2, 3)
+###
+
+
 struct CoordinatePair
     x::Float64
     y::Float64
 end
+###
+
+
 o = CoordinatePair(0, 0)
 x = CoordinatePair(1, 2)
+###
+
+
 distance(a::CoordinatePair, b::CoordinatePair) = √ ( (a.x - b.x)^2 + (a.y - b.y)^2 )
 
 distance(o, x)
+###
+
+
 origin() = CoordinatePair()
 
 distance(a::CoordinatePair) = distance(origin(), a)
 
 distance(x)
+###
+
+
 struct Fraction
     num::Int
     denom::Int
@@ -83,6 +137,9 @@ Base.show(io::IO, x::Fraction) = print(io, x.num, " // ", x.denom)
 
 x = Fraction(3, 4)
 
+###
+
+
 import Base: *
 
 *(x::Fraction, y::Fraction) = Fraction(x.num * y.num, x.denom * y.denom)
@@ -91,15 +148,36 @@ x = Fraction(3, 4)
 y = Fraction(6, 5)
 
 x * y   # result not in lowest terms
+###
+
+
 *(x, y)
+###
+
+
 methods(*)
+###
+
+
 Fraction(3, 4) * 1
+###
+
+
 *(x::Fraction, y::Int) = x * Fraction(y, 1)
 Fraction(3, 4) * 1
+###
+
+
 *(x::Fraction, y::Int) = Fraction(x.num * y, x.denom)
+###
+
+
 @which sin(3.1)
 
 @edit sin(3.1)
+###
+
+
 function square_root(n)
     found = 0
 
@@ -118,7 +196,13 @@ function square_root(n)
 end
 
 square_root(10), square_root(9)
+###
+
+
 bitstring(0.1)
+###
+
+
 f(x) = 3x
 
 @code_lowered f(3)
@@ -127,3 +211,6 @@ f(x) = 3x
 @code_llvm optimize=false f(3)
 @code_llvm f(3)
 @code_native f(3)
+###
+
+
