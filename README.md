@@ -47,7 +47,6 @@ This will create a new directory called `6.S083` with the matierials.
 git pull
 ```
 This needs to be executed from within the directory. (Use `cd` to change directory.)
-```
 
 
 ### Syllabus
