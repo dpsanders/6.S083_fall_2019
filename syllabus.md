@@ -1,4 +1,4 @@
-
+# Syllabus and schedule for 6.S083
 
 <table>
   <tr>
