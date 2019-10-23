@@ -38,7 +38,7 @@ Discrete-time iterative dynamics
    </td>
    <td>- Vectors as containers
 <p>
-- Higher-order functions
+- Anonymous functions
 <p>
 - Visualization
 <p>
