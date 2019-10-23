@@ -22,6 +22,11 @@ TR 11 - 1, Julia lab, floor 7 of Stata Center (turn left from Gates building ele
 
 Problem sets consist of coding and answering questions and will be submitted online.
 
+### Piazza
+
+https://piazza.com/class/k2241am36ut5du
+
+
 ### Syllabus
 
 
