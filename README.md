@@ -1,4 +1,4 @@
-# 6.S083 - Introduction to Computational Thinking (Common Ground)
+# 6.S083 - Introduction to Computational Thinking
 
 ## Fall 2019
 
@@ -6,7 +6,7 @@ Welcome to 6.S083! This is an introductory course on Computational Thinking, usi
 It is being taught at MIT in the 2nd half of the fall 2019 semester.
 
 ### Professors
-David P. Sanders ([sandersd@mit.edu](mailto:sandersd@mit.edu)) & Alan Edelman
+Visiting professor David P. Sanders ([sandersd@mit.edu](mailto:sandersd@mit.edu)) & Professor Alan Edelman
 
 ### Lectures
 MW 1 - 2.30, room 34-301.
@@ -47,8 +47,10 @@ This will create a new directory called `6.S083` with the matierials.
 git pull
 ```
 This needs to be executed from within the directory. (Use `cd` to change directory.)
-```
 
+### Recordings of classes
+
+(Unedited) screen + audio recordings are available [here](https://www.dropbox.com/sh/dj3d9mcsevubmii/AACn6fF6cVNwI2Sw2UhZtk81a?dl=0).
 
 ### Syllabus
 See [here](syllabus.md) for the course syllabus and schedule.
