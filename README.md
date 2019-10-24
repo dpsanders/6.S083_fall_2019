@@ -1,4 +1,4 @@
-# 6.S083 - Introduction to Computational Thinking (Common Ground)
+# 6.S083 - Introduction to Computational Thinking
 
 ## Fall 2019
 
