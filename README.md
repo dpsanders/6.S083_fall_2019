@@ -50,7 +50,7 @@ This needs to be executed from within the directory. (Use `cd` to change directo
 
 ### Recordings of classes
 
-Screen + audio recordings are available [here](https://www.dropbox.com/sh/dj3d9mcsevubmii/AACn6fF6cVNwI2Sw2UhZtk81a?dl=0).
+(Unedited) screen + audio recordings are available [here](https://www.dropbox.com/sh/dj3d9mcsevubmii/AACn6fF6cVNwI2Sw2UhZtk81a?dl=0).
 
 ### Syllabus
 See [here](syllabus.md) for the course syllabus and schedule.
