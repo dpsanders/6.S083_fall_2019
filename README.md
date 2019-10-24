@@ -6,7 +6,7 @@ Welcome to 6.S083! This is an introductory course on Computational Thinking, usi
 It is being taught at MIT in the 2nd half of the fall 2019 semester.
 
 ### Professors
-David P. Sanders ([sandersd@mit.edu](mailto:sandersd@mit.edu)) & Alan Edelman
+Visiting professor David P. Sanders ([sandersd@mit.edu](mailto:sandersd@mit.edu)) & Professor Alan Edelman
 
 ### Lectures
 MW 1 - 2.30, room 34-301.
