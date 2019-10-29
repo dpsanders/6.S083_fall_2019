@@ -1,5 +1,8 @@
 # Syllabus and schedule for 6.S083
 
+Problem sets will be due on the Friday after the date specified here, at 5pm.
+The following problem set will be out on the same day.
+
 <table>
   <tr>
    <td>
@@ -225,7 +228,7 @@ Data and linear regression
   </tr>
   <tr>
    <td>
-    Class cancelled (Thanksgiving travel) 
+    Class cancelled (Thanksgiving travel)
 
    </td>
    <td>November 27
@@ -292,4 +295,3 @@ Interval arithmetic methods
    <td>December 11
    </td>
    <td>Floating-point arithmetic
-
