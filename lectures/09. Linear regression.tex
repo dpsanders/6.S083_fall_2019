@@ -1,0 +1,478 @@
+\hypertarget{linear-regression-and-machine-learning}{%
+\section{09. Linear regression and machine
+learning}\label{linear-regression-and-machine-learning}}
+
+\hypertarget{last-time}{%
+\subsection{Last time}\label{last-time}}
+
+\begin{itemize}
+\item
+  Exact enumeration for first-passage times
+\item
+  Continuous random variables
+\item
+  Probability density function
+\item
+  Central Limit Theorem
+\end{itemize}
+
+\hypertarget{goal-for-today}{%
+\subsection{Goal for today}\label{goal-for-today}}
+
+\begin{itemize}
+\item
+  What is machine learning?
+\item
+  Linear regression
+\item
+  Derivatives and how to calculate them
+\end{itemize}
+
+\hypertarget{understanding-data}{%
+\subsection{Understanding data}\label{understanding-data}}
+
+\begin{itemize}
+\item
+  Suppose have \textbf{data} from some experiment / process
+\item
+  Examples:
+
+  \begin{itemize}
+  \item
+    Stock price as function of time
+  \item
+    Jet noise as a function of air flow speed
+  \item
+    Sales as function of advertising budget
+  \item
+    Length of spring as function of force applied
+  \item
+    Variance of random walker as function of time
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{characteristics-of-data}{%
+\subsection{Characteristics of data}\label{characteristics-of-data}}
+
+\begin{itemize}
+\item
+  Data have \textbf{inputs}: we specify or measure them
+\item
+  Data have \textbf{outputs}: we are interested in how they change when
+  inputs change
+\item
+  Data are \textbf{noisy}: intrinsic random fluctuations
+\end{itemize}
+
+\hypertarget{understanding-data-ii-models}{%
+\subsection{Understanding data II:
+Models}\label{understanding-data-ii-models}}
+
+\begin{itemize}
+\item
+  Want to \textbf{understand} / characterise structure of data: world of
+  \textbf{statistics}
+\item
+  Also want to \textbf{predict} ``response'' for new input data: world
+  of \textbf{machine learning}
+\item
+  To understand data we will impose some kind of \textbf{structure} on
+  it -- a \textbf{model}
+\item
+  Model describes relationship that we think data has
+\end{itemize}
+
+\hypertarget{linear-regression}{%
+\subsection{Linear regression}\label{linear-regression}}
+
+\begin{itemize}
+\item
+  One of simplest models: \textbf{linear regression} (bad name)
+\item
+  Relates quantitative measurements
+\item
+  Assumes linear (affine) relationship between inputs \(X\) and outputs
+  \(Y\):
+\end{itemize}
+
+\[Y = f(X) = aX + b \quad + \epsilon\]
+
+\begin{itemize}
+\item
+  \(\epsilon\) describes noise / fluctuations
+\item
+  Unknown \textbf{parameters} \(a\) and \(b\)
+\end{itemize}
+
+\hypertarget{machine-learning-fitting}{%
+\subsection{Machine learning: Fitting}\label{machine-learning-fitting}}
+
+\begin{itemize}
+\item
+  Notation: Data \((x_i, y_i)\)
+\item
+  Input \(x_i\) and corresponding output \(y_i\), for \(i=1,\ldots, N\)
+\item
+  Given data we want to \textbf{learn} parameters \(a\) and \(b\) in
+  model
+\item
+  \textbf{Learning} is just \textbf{fitting}!
+\item
+  What is fitting?
+\end{itemize}
+
+\hypertarget{fitting}{%
+\subsection{Fitting}\label{fitting}}
+
+\begin{itemize}
+\item
+  Fitting: Find parameters \(a\) and \(b\) in model that \textbf{best}
+  describe data
+\item
+  What does \textbf{best} mean?
+\item
+  Need way to decide what is ``best'' fit
+\item
+  Need to \textbf{minimize} a \textbf{cost} / \textbf{loss} function
+  \(L\)
+\item
+  How choose loss function?
+\end{itemize}
+
+\hypertarget{least-squares}{%
+\subsection{Least squares}\label{least-squares}}
+
+\begin{itemize}
+\item
+  Common solution: \textbf{Least squares}
+\item
+  Sum of squares of distances of data from line
+\item
+  This is a function \(L(a, b)\) of parameters \(a\) and \(b\)
+\item
+  Find values of \(a\) and \(b\) that minimize \(L(a, b)\)
+\item
+  \textbf{How}?
+\end{itemize}
+
+\hypertarget{minimization-in-1d}{%
+\subsection{Minimization in 1D}\label{minimization-in-1d}}
+
+\begin{itemize}
+\item
+  We have a 2D problem. Simplify to 1D
+\item
+  Think of hill of height \(h(x)\) as function of \(x\)
+\item
+  How find minimum of hill?
+\item
+  ``Roll down the hill''
+\item
+  Take steps and move in direction that \textbf{decreases} \(L\)
+\item
+  How do we talk about functions \textbf{decreasing}?
+\end{itemize}
+
+\hypertarget{reminder-derivatives}{%
+\subsection{Reminder: Derivatives}\label{reminder-derivatives}}
+
+\begin{itemize}
+\item
+  \textbf{Derivative} = \textbf{rate of change}
+\item
+  Increasing \(\Longleftrightarrow\) derivative \textgreater{} 0
+\item
+  Decreasing \(\Longleftrightarrow\) derivative 0
+\end{itemize}
+
+\hypertarget{derivatives-ii}{%
+\subsection{Derivatives II}\label{derivatives-ii}}
+
+\begin{itemize}
+\item
+  \textbf{Derivative} of function \(f: \mathbb{R} \to \mathbb{R}\) at
+  point \(a\) is slope of \textbf{tangent line}
+\item
+  Notation: \(f'(a)\), or \(\left. \frac{df}{dx} \right| _a\) (if you
+  must).
+\item
+  \textbf{Tangent line} is straight line that ``touches'' graph of
+  function at point
+\item
+  Formal definition of derivative of \(f: \mathbb{R} \to \mathbb{R}\) at
+  \(a \in \mathbb{R}\):
+  \[f'(a) := \lim_{h \to 0} \frac{f(a + h) - f(a)}{h}\]
+\item
+  Intuition: Limit of slopes of ``secant lines'' (``rise over run'')
+\end{itemize}
+
+\hypertarget{why-do-we-care-about-derivatives}{%
+\subsection{Why do we care about
+derivatives?}\label{why-do-we-care-about-derivatives}}
+
+\begin{itemize}
+\item
+  They tell us how function looks ``locally'' (close to a point).
+\item
+  E.g. used to analyze dynamics near a fixed point.
+\item
+  Some applications:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    optimization
+  \item
+    finding roots (zeros)
+  \item
+    sensitivity: ``how much does output change when input varies''
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{how-to-calculate-derivatives-numerically}{%
+\subsection{\texorpdfstring{How to \emph{calculate} derivatives
+numerically}{How to calculate derivatives numerically}}\label{how-to-calculate-derivatives-numerically}}
+
+\begin{itemize}
+\item
+  Numerically: Cannot take limit \(h \to 0\)
+\item
+  So don't! Fix a finite, non-zero \(h\) to get \textbf{finite
+  difference} approximation:
+
+  \(f'(a) \simeq \frac{f(a + h) - f(a)}{h}\)
+\item
+  How good is this approximation? PS4
+\item
+  Can we do better by calculating derivatives exactly?
+\end{itemize}
+
+\hypertarget{a-different-point-of-view}{%
+\subsection{A different point of view}\label{a-different-point-of-view}}
+
+\begin{itemize}
+\item
+  Rewrite definition in more useful way:
+\item
+  Get rid of that annoying limit! (Or, rather, hide it):
+\end{itemize}
+
+\[\lim_{h \to 0} \left[ \frac{f(a + h) - f(a)}{h} - f'(a) \right] = 0\]
+
+\begin{itemize}
+\item
+  Write as \[\frac{f(a + h) - f(a)}{h} - f'(a)  = o(h)\]
+\item
+  Define \(o(h)\) to mean ``any function \(g(h)\) that satisfies
+  \(g(h) / h \to 0\) when \(h \to 0\)''.
+\end{itemize}
+
+\hypertarget{section}{%
+\subsection{}\label{section}}
+
+\begin{itemize}
+\item
+  Then \[f(a + h) = f(a) + h f'(a) + o(h).\]
+\item
+  Conversely: If can find \(A\) and \(B\) with
+  \(f(a + h) = A + Bh + o(h)\), then \(A = f(a)\) and \(B = f'(a)\).
+\item
+  Use this to calculate derivatives!
+\item
+  \textbf{Intuition}: Tangent line is best affine approximation to \(f\)
+  near \(a\).
+\end{itemize}
+
+\hypertarget{infinitesimals}{%
+\subsection{Infinitesimals}\label{infinitesimals}}
+
+\begin{itemize}
+\item
+  Simplify by thinking of ``infinitesimal'' perturbation \(\epsilon\)
+\item
+  With \(\epsilon^2 = 0\)
+\item
+  So \(f(a + \epsilon) = f(a) + \epsilon f'(a)\)
+\item
+  Expand \(f(a + \epsilon)\); coefficient of \(\epsilon\) is derivative
+\end{itemize}
+
+\hypertarget{sum-rule-for-derivatives}{%
+\subsection{Sum rule for derivatives}\label{sum-rule-for-derivatives}}
+
+\begin{itemize}
+\item
+  Sum of two functions: \[ (f + g)(x) := f(x) + g(x) \]
+\item
+  Its derivative:
+\end{itemize}
+
+\[
+[f + g](a + \epsilon) &= f(a + \epsilon) + g(a + \epsilon)  \]
+\[ [f(a) + \epsilon f'(a)]  + [g(a) + \epsilon g'(a)] \]
+\[ [f(a) + g(a)] + [f'(a) + g'(a)] \epsilon .
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  Hence \((f + g)'(a)\) = (coefficient of \(\epsilon\)) =
+  \(f'(a) + g'(a)\).
+\end{itemize}
+
+\hypertarget{product-rule-for-derivatives}{%
+\subsection{Product rule for
+derivatives}\label{product-rule-for-derivatives}}
+
+\begin{itemize}
+\item
+  Product of two functions:
+
+  \[(f \cdot g)(x) := f(x) \cdot g(x)\]
+
+  (Here \(\cdot\) is normal scalar multiplication)
+\item
+  Its derivative:
+\end{itemize}
+
+\[
+[f \cdot g](a + \epsilon) &= f(a + \epsilon) \cdot g(a + \epsilon)  \]
+\[ [f(a) + \epsilon f'(a)] \cdot [g(a) + \epsilon g'(a)] \]
+\[ [f(a) \cdot g(a)] + [f(a) g'(a) + g(a) f'(a)] \epsilon.
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  Hence \((f \cdot g)'(a)\) = (coefficient of \(\epsilon\)) =
+  \(f(a) g'(a) + g(a) f'(a)\).
+\end{itemize}
+
+\hypertarget{derivatives-by-executing-rules-algorithmic-differentiation}{%
+\subsection{Derivatives by executing rules: Algorithmic
+differentiation}\label{derivatives-by-executing-rules-algorithmic-differentiation}}
+
+\begin{itemize}
+\item
+  For more complicated function, execute each rule in turn
+\item
+  E.g. \(h(x) = 3x^2 + 2x\) is \(h(x) = +(3 * (x * x), 2 * x)\)
+\item
+  Differentiating by hand feels pointless -- we are \emph{executing an
+  algorithm}
+\item
+  Computers are good at that! \textbf{Algorithmic / automatic
+  differentiation}
+\item
+  How \emph{encode} rules to find \(f'(a)\) on computer?
+\item
+  What information do we need for each function?
+\end{itemize}
+
+\hypertarget{information-we-need}{%
+\subsection{Information we need}\label{information-we-need}}
+
+\begin{itemize}
+\item
+  Fix point \(a\) where taking derivatives
+\item
+  For each function \(f\), need exactly \emph{two} pieces of
+  information:
+\item
+  Value \(f(a)\) and derivative \(f'(a)\).
+\item
+  So can represent function using just those two pieces of information
+\item
+  How represent in Julia?
+\end{itemize}
+
+\hypertarget{representation-in-julia}{%
+\subsection{Representation in Julia}\label{representation-in-julia}}
+
+\begin{itemize}
+\item
+  Need to group together 2 pieces of information
+\item
+  Could use tuple or vector etc.
+\item
+  But want to implement novel \textbf{behaviour}, i.e.~rules for \(+\)
+  and \(\times\).
+\item
+  So instead should \emph{define a new type}
+\item
+  Commonly called ``dual number''
+\end{itemize}
+
+\hypertarget{dual-number-type}{%
+\subsection{Dual number type}\label{dual-number-type}}
+
+\begin{itemize}
+\item
+  Make an immutable dual number type:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{struct Dual}
+\NormalTok{    value::}\DataTypeTok{Float64}
+\NormalTok{    deriv::}\DataTypeTok{Float64}
+\KeywordTok{end}
+\end{Highlighting}
+\end{Shaded}
+\item
+  Recall: this is template for box holding two variables, \texttt{value}
+  and \texttt{derivative}.
+\item
+  \texttt{Dual(a,\ b)} corresponds directly to \(a + \epsilon b\)
+\end{itemize}
+
+\hypertarget{implementing-arithmetic}{%
+\subsection{Implementing arithmetic}\label{implementing-arithmetic}}
+
+\begin{itemize}
+\item
+  To implement arithmetic, import relevant functions:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{import}\NormalTok{ Base: +, *}
+\end{Highlighting}
+\end{Shaded}
+\item
+  Add methods acting on objects of type \texttt{Dual}:
+  \texttt{julia\ \ \ +(f::Dual,\ g::Dual)\ =\ Dual(f.value\ +\ g.value,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ f.deriv\ +\ g.deriv)}
+\item
+  Here we have defined the sum of two functions to have the correct
+  value and derivative
+\end{itemize}
+
+\hypertarget{differentiation}{%
+\subsection{Differentiation}\label{differentiation}}
+
+\begin{itemize}
+\item
+  Suppose have Julia function like \texttt{f(x)\ =\ x\^{}2\ +\ 2x}
+\item
+  How differentiate \(f\) at \(a = 3\)?
+\item
+  \(f(a + \epsilon) = f(a) + \epsilon f'(a)\)
+\item
+  So pass in \(a + \epsilon\) to \(f\), i.e.~\texttt{Dual(a,\ 1)}.
+\item
+  {[}Represents identity function \(x \mapsto x\) at \(x=a\), with
+  derivative \(1\){]}.
+\item
+  \textbf{Exercise}: Write function \texttt{differentiate} taking
+  function \texttt{f} and value \texttt{a} that calculates \(f'(a)\).
+\end{itemize}
+
+\hypertarget{review}{%
+\subsection{Review}\label{review}}
+
+\begin{itemize}
+\item
+  Motivation: Linear regression -- fitting straight line
+\item
+  Optimization wants derivatives
+\item
+  Calculate derivatives using automatic differentiation
+\end{itemize}
