@@ -38,6 +38,8 @@ Submit a Jupyter notebook with your solutions to `sandersd@mit.edu`. Make sure t
 
 1. Complete the implementation of the `Dual` type from class, including derivatives for subtraction, division, and integer powers. For $/$ you may assume that the denominator is not zero.
 
+    Add methods for each function to e.g. add a real number (type `::Real`) to a `Dual`. Treat a real number as having derivative 0.
+
 2. Put these definitions in a file `dual.jl`. This may be included with `include("dual.jl")` from Juno or Jupyter, or from another file. (You must make sure the files are in the same directory, or give the path to the file on your machine.)
 
 3. For functions $f$ such as `exp`, we define the action of the function on a `Dual` using
