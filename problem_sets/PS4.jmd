@@ -48,7 +48,8 @@ Submit a Jupyter notebook with your solutions to `sandersd@mit.edu`. Make sure t
 
     Use this to define `exp`, `sin` and `log` on `Dual` numbers. (These will return a new `Dual` number as the result.)
 
-4. Write a function `derivative` that takes a function `f` and uses `Dual` numbers to calculate its derivative.
+4. Write a function `derivative` that takes a function $f$ and a point $a$,
+and uses `Dual` numbers to calculate the derivative $f'(a)$ of $f$ at $a$.
 
 
 5. Recall that one way to define partial derivatives of a function $f: \mathbb{R}^2 \to \mathbb{R}$ is as the usual derivative of the function obtained when you fix the other argument.
