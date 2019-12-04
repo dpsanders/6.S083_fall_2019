@@ -1,0 +1,468 @@
+\hypertarget{neural-networks}{%
+\section{12. Neural networks}\label{neural-networks}}
+
+\hypertarget{last-time}{%
+\subsection{Last time}\label{last-time}}
+
+\begin{itemize}
+\item
+  Automatic differentiation and Newton in higher dimensions
+\item
+  Classification
+\item
+  Neurons
+\end{itemize}
+
+\hypertarget{goals-for-today}{%
+\subsection{Goals for today}\label{goals-for-today}}
+
+\begin{itemize}
+\item
+  Neural networks
+\item
+  Stochastic gradient descent
+\item
+  Training and testing
+\end{itemize}
+
+\hypertarget{recall-supervised-learning}{%
+\subsection{Recall: Supervised
+learning}\label{recall-supervised-learning}}
+
+\begin{itemize}
+\item
+  Goal of \textbf{supervised learning}:
+\item
+  Learn mapping from given inputs and output
+\item
+  E.g. inputs = images; outputs = labelled categories
+\item
+  Idea: \textbf{Predict} output when given new data
+\item
+  I.e. should be able to \emph{generalize}
+\item
+  Example: map image of handwritten digit to correct answer
+\end{itemize}
+
+\hypertarget{supervised-learning-ii}{%
+\subsection{Supervised learning II}\label{supervised-learning-ii}}
+
+\begin{itemize}
+\item
+  Inputs: vectors \(\mathbf{x}_i\) in \(\mathbb{R}^n\)
+\item
+  Desired outputs: numbers or vectors \(\mathbf{y}_i\)
+\item
+  Learn function that maps each \(\mathbf{x}_i\) to \(\mathbf{y}_i\) as
+  closely as possible
+\item
+  Need \textbf{parametrized functions}
+\item
+  Learn parameter values giving \textbf{best fit}
+\end{itemize}
+
+\hypertarget{recall-artificial-neurons}{%
+\subsection{Recall: Artificial
+neurons}\label{recall-artificial-neurons}}
+
+\begin{itemize}
+\item
+  \textbf{Neuron}: Element (function) mapping \(n\) inputs to one
+  output:
+  \[f(\mathbf{x}; \mathbf{w}, b) = \sigma \left( \sum_i w_i x_i + b \right)
+        = \sigma(\mathbf{w} \cdot \mathbf{x} + b)
+    \]
+\item
+  \(\sigma\) is nonlinear \textbf{activation function},
+  e.g.~\(\sigma(x) = \frac{1}{1 + \exp(-x)}\)
+\item
+  Put \(x_{n+1} = 1\) and \(w_{n+1} = b\) so
+  \(f(\mathbf{x}; \mathbf{w}) = \sigma (\mathbf{w} \cdot \mathbf{x})\)
+\item
+  So neuron is function \(f: \mathbb{R}^n \to \mathbb{R}\)
+\item
+  Classifies data using hyperplane
+\end{itemize}
+
+\hypertarget{defining-a-neuron-in-julia}{%
+\subsection{Defining a neuron in
+Julia}\label{defining-a-neuron-in-julia}}
+
+\begin{itemize}
+\item
+  Want to treat neuron as a \emph{function}
+\item
+  But natural to make a new \emph{type} \texttt{Neuron}
+\item
+  Define \texttt{n\ =\ Neuron()}
+\item
+  Now want to call \texttt{n} \emph{as if it were a function}, acting on
+  input data \texttt{x}:
+\item
+  \texttt{n(x)} should give output of neuron for input vector \texttt{x}
+\end{itemize}
+
+\hypertarget{defining-a-neuron-ii}{%
+\subsection{Defining a neuron II}\label{defining-a-neuron-ii}}
+
+\begin{itemize}
+\item
+  Combine a type and a function: make a type that is \textbf{callable}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\NormalTok{struct Neuron}
+\NormalTok{    w}
+\NormalTok{    b}
+\KeywordTok{end}
+
+\NormalTok{(n::Neuron)(x) = n.w * x + n.b}
+
+\NormalTok{n = Neuron(}\FloatTok{3}\NormalTok{, }\FloatTok{4}\NormalTok{)}
+\NormalTok{n(}\FloatTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\item
+  Note that this is \emph{different} from a constructor, which is a
+  function with same name as type
+\item
+  Here we are using \emph{variables / objects} of a certain type
+  \emph{as if they were functions}
+\end{itemize}
+
+\hypertarget{neural-networks-1}{%
+\subsection{Neural networks}\label{neural-networks-1}}
+
+\begin{itemize}
+\item
+  One neuron gives relatively simple function
+\item
+  Useful once \emph{couple many of them together} into a network with
+  more complex behaviour
+\item
+  Can show: suitable network structure gives \textbf{universal function
+  approximator}
+\item
+  Any function \(\mathbb{R}^n \to \mathbb{R}\) can be closely
+  approximated by a neural network
+\end{itemize}
+
+\hypertarget{loss-function}{%
+\subsection{Loss function}\label{loss-function}}
+
+\begin{itemize}
+\item
+  \textbf{Partial loss function} \(\mathcal{L}_i\):
+\item
+  Measures distance of single prediction
+  \(\hat{y}_i := f(\mathbf{x}_i)\) from desired result \(y_i\)
+\item
+  E.g. mean-squared error:
+
+  \[\mathcal{L}_i(\mathbf{w}):= (\hat{\mathbf{y}}_i - \mathbf{y}_i)^2
+    = \left[f(\mathbf{x}_i; \mathbf{w} ) - \mathbf{y}_i \right]^2
+    \]
+\item
+  Define (total) \textbf{loss function} over \emph{all} data:
+
+  \[\mathcal{L}(\mathbf{w}) := \frac{1}{N} \sum_{i=1}^N \mathcal{L}_i\]
+\end{itemize}
+
+\hypertarget{minimize}{%
+\subsection{Minimize!}\label{minimize}}
+
+\begin{itemize}
+\item
+  We want \emph{best} fit to data
+\item
+  So \emph{minimize} loss function (distance of prediction from data)
+\item
+  With respect to \emph{parameter} values \(\mathbf{w}_j\) of neuron
+  \(j\) for all \(j\)
+\item
+  How should we minimize?
+\end{itemize}
+
+\hypertarget{training}{%
+\subsection{Training}\label{training}}
+
+\begin{itemize}
+\item
+  This is often called \textbf{training} a neural network
+\item
+  Process of ``learning'' from data
+\item
+  Run optimization algorithm using data to push network closer and
+  closer to desired results
+\item
+  Think of as a dynamic process
+\end{itemize}
+
+\hypertarget{optimization-algorithms}{%
+\subsection{Optimization algorithms}\label{optimization-algorithms}}
+
+\begin{itemize}
+\item
+  There are many optimization algorithms -- e.g.~book
+  \href{https://mitpress.mit.edu/books/algorithms-optimization}{\emph{Algorithms
+  for Optimization}} by Kochenderfer \& Wheeler
+\item
+  We will use simplest: \textbf{gradient descent}:
+\item
+  Take step ``downhill'' by moving all weights -- \(\mathbf{w}^t\) at
+  time \(t\)
+\item
+  Update weights by small step in direction opposite gradient:
+
+  \[\mathbf{w}^{t+1} = \mathbf{w}^{t} - \eta \nabla{\mathcal{L}}(\mathbf{w}^{t})\]
+\item
+  Will move towards local minimum (hopefully)
+\item
+  \(\eta\) is \textbf{learning rate}: leave fixed or allow to change
+  over time.
+\end{itemize}
+
+\hypertarget{calculating-gradient}{%
+\subsection{Calculating gradient}\label{calculating-gradient}}
+
+\begin{itemize}
+\item
+  Need gradient of \(\mathcal{L}\) with respect to \emph{all} parameters
+\item
+  This is expensive
+\item
+  Use forward-mode automatic differentiation in problem set 5
+\item
+  But really should use \textbf{backpropagation} = reverse-mode
+  automatic differentiation
+\item
+  Backpropagation calculates gradient with respect to all parameters in
+  constant multiple of time to calculate function itself!
+\item
+  How can we reduce the cost of taking gradient of \(\mathcal{L}\)?
+\end{itemize}
+
+\hypertarget{stochastic-gradient-descent}{%
+\subsection{Stochastic gradient
+descent}\label{stochastic-gradient-descent}}
+
+\begin{itemize}
+\item
+  Often have huge data sets with large value of \(N\)
+\item
+  Too expensive to calculate full gradient
+  \(\nabla \mathcal{L}(\mathbf{w})= \sum_{i=1}^N \mathcal{L}_i(\mathbf{w})\)
+\item
+  What could we do instead?
+\end{itemize}
+
+\hypertarget{stochastic-gradient-descent-ii}{%
+\subsection{Stochastic gradient descent
+II}\label{stochastic-gradient-descent-ii}}
+
+\begin{itemize}
+\item
+  Idea: Don't calculate gradient of full \(\mathcal{L}\)
+\item
+  Only use a piece of it
+\item
+  E.g. calculate \(\nabla \mathcal{L}_i\) using \emph{single} data point
+\item
+  Or use mean over a few data points: a \textbf{batch}
+\item
+  \textbf{Stochastic gradient descent}: stochastic estimate of full
+  gradient
+\end{itemize}
+
+\hypertarget{stochastic-gradient-descent-iii}{%
+\subsection{Stochastic gradient descent
+III}\label{stochastic-gradient-descent-iii}}
+
+\begin{itemize}
+\item
+  So move \(\mathbf{w}\) in direction that decreases error for one or
+  few data points
+\item
+  But may increase loss function (total error) over all
+\item
+  This may actually \emph{help}, e.g.~to escape local minima / saddle
+  points
+\end{itemize}
+
+\hypertarget{classifying-with-2-classes}{%
+\subsection{Classifying with \textgreater2
+classes}\label{classifying-with-2-classes}}
+
+\begin{itemize}
+\item
+  With 2 classes, only need single scalar output
+\item
+  With \(n\) classes, need way to distinguish between \(n\) outputs
+\item
+  How could we do this?
+\end{itemize}
+
+\hypertarget{one-hot-vectors}{%
+\subsection{One-hot vectors}\label{one-hot-vectors}}
+
+\begin{itemize}
+\item
+  Usual solution: \textbf{one-hot} vectors
+\item
+  Like Euclidean basis vectors
+\item
+  \((\mathbf{e}_i)_j = 1\) if \(j=i\) and 0 otherwise
+\item
+  E.g. apple = \((1, 0, 0)\), banana = \((0, 1, 0)\), grape =
+  \((0, 0, 1)\)
+\item
+  Output probability vector, e.g.~\((0.4, 0.5, 0.1)\) classified as
+  banana
+\end{itemize}
+
+\hypertarget{neural-network-layer}{%
+\subsection{Neural network layer}\label{neural-network-layer}}
+
+\begin{itemize}
+\item
+  Each neuron has single output
+\item
+  Need \(m\) outputs, so need \(m\) neurons
+\item
+  \textbf{Layer}: maps input vector \(\mathbf{x}_i \in \mathbb{R}^n\) to
+  \(m\) outputs
+\item
+  \(f_i(\mathbf{x}) = \sigma(\mathbf{w}_i \cdot \mathbf{x})\) -- neuron
+  \(i\) has own weight vector \(\mathbf{w}_i = (w_{ij})_{j=1}^n\)
+\item
+  A neural network layer is just a particular kind of function!
+\end{itemize}
+
+\hypertarget{what-does-single-layer-do}{%
+\subsection{What does single layer
+do?}\label{what-does-single-layer-do}}
+
+\begin{itemize}
+\item
+  Each neuron is independent
+\item
+  \(f_i(\mathbf{x})\) measures \textbf{distance from hyperplane}
+\item
+  Neuron \(i\) classifies inputs on opposite sides of \textbf{separating
+  hyperplane}
+
+  \[\mathbf{w_i} \cdot \mathbf{x} + b_i = 0.5\]
+\item
+  How obtain function that can classify with a nonlinear separating set?
+\end{itemize}
+
+\hypertarget{one-layer-as-a-matrix}{%
+\subsection{One layer as a matrix}\label{one-layer-as-a-matrix}}
+
+\begin{itemize}
+\item
+  Layer is a \emph{function} \(\mathbb{R}^n \to \mathbb{R}^m\):
+
+  \[f(\mathbf{x}) = \sigma.(\mathsf{W} \, \mathbf{x})\]
+\item
+  Used Julia ``dot notation'': \emph{\(\sigma\) is applied to each
+  component}
+\item
+  \(\mathsf{W}\) is a matrix; \(\mathsf{W} \, \mathbf{x}\) is
+  matrix--vector multiplication
+\item
+  Each layer: linear transformation \(\mathsf{W}\) followed by nonlinear
+  transformation \(\sigma\)
+\end{itemize}
+
+\hypertarget{feed-forward-neural-networks}{%
+\subsection{Feed-forward neural
+networks}\label{feed-forward-neural-networks}}
+
+\begin{itemize}
+\item
+  ``Multi-layer perceptron'': combine (compose) several layers
+\item
+  E.g. 2 layers with input \(\mathbf{x}_0\):
+
+  \[\mathbf{x}_1 = \sigma.(\mathsf{W}_1 \, \mathbf{x}_0)\]
+
+  \[\mathbf{x}_2 = \sigma.(\mathsf{W}_2 \, \mathbf{x}_1)\]
+\item
+  How convert output to probability vector?
+\end{itemize}
+
+\hypertarget{converting-to-a-probability-vectory-softmax}{%
+\subsection{Converting to a probability vectory:
+softmax}\label{converting-to-a-probability-vectory-softmax}}
+
+\begin{itemize}
+\item
+  Output is \emph{vector} \(\hat{\mathbf{y}}_i\) for input
+  \(\mathbf{x}_0\)
+\item
+  Want \emph{probability} to be in each class
+\item
+  Need to compress vector of outputs to vector of probabilities
+\item
+  Generalize \(\sigma\) to \textbf{softmax}:
+
+  \[\text{softmax}(\mathbf{z})_i := \frac{\exp(z_i)}{\sum_{j=1}^K \exp(z_j)}\]
+\end{itemize}
+
+\hypertarget{feed-forward-neural-network}{%
+\subsection{Feed-forward neural
+network}\label{feed-forward-neural-network}}
+
+\begin{itemize}
+\item
+  Put it all together:
+
+  \[\hat{\mathbf{y}} = f(\mathbf{x})\]
+\item
+  Output of one layer is input of next layer:
+
+  \[\mathbf{x}_1 = \sigma.(\mathsf{W}_1 \cdot \mathbf{x}_0)\]
+
+  \[\mathbf{x}_2 = \sigma.(\mathsf{W}_2 \cdot \mathbf{x}_1)\]
+
+  \[\hat{\mathbf{y}} = \text{softmax}(\mathbf{x}_2)\]
+
+  \[\text{network} = \text{layer}_1 \circ \text{layer}_2 \circ \text{softmax} \]
+\item
+  \emph{A neural network is just a particular kind of function with
+  parameters!}
+\item
+  How should we \emph{train} neural network?
+\end{itemize}
+
+\hypertarget{traintest-split}{%
+\subsection{Train--test split}\label{traintest-split}}
+
+\begin{itemize}
+\item
+  Use most of data for training
+\item
+  Retain some to \emph{test} how well model \emph{generalizes} to unseen
+  data
+\item
+  ``Train--test split''
+\item
+  Information about how well network is learning:
+\item
+  Calculate total loss over training samples, and total loss over test
+  samples
+\end{itemize}
+
+\hypertarget{review}{%
+\subsection{Review}\label{review}}
+
+\begin{itemize}
+\item
+  Neural networks
+\item
+  Stochastic gradient descent
+\item
+  Training and testing
+\end{itemize}
