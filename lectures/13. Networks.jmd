@@ -27,7 +27,7 @@ header-includes: |
 - Random walks
 
 
-# Modelling connectivity
+## Modelling connectivity
 
 - Real-world systems often depend on **connectivity**:
 
@@ -64,6 +64,7 @@ header-includes: |
 - **Directed** (one-way arrows) or **undirected** (arrows go both ways)
 
 - Edges may have **weights**, e.g. distance between nodes
+
 
 ## What questions would we like to answer?
 
@@ -108,7 +109,7 @@ header-includes: |
 
 - Square / cubic grid
 
-- **Erdős--Rényi**: $N$ nodes, each connected to $k$ neighbours at random
+- **Erdos--Renyi**: $N$ nodes, each connected to $k$ neighbours at random
 
 ## Networks in Julia
 

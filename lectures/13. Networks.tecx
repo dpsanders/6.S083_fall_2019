@@ -1,0 +1,375 @@
+\begin{frame}{13. Networks}
+\protect\hypertarget{networks}{}
+
+\begin{block}{Last time}
+
+\begin{itemize}
+\item
+  Neurons as classifiers
+\item
+  Neural networks
+\item
+  Stochastic gradient descent
+\end{itemize}
+
+\end{block}
+
+\begin{block}{Goals for today}
+
+\begin{itemize}
+\item
+  Connectivity: Networks / graphs
+\item
+  Shortest path
+\item
+  Random walks
+\end{itemize}
+
+\end{block}
+
+\end{frame}
+
+\begin{frame}[fragile]{Modelling connectivity}
+\protect\hypertarget{modelling-connectivity}{}
+
+\begin{itemize}
+\item
+  Real-world systems often depend on \textbf{connectivity}:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Travel: Massachusetts road network; world airports
+  \item
+    Social network: Alumni of MIT and their friendships (or not)
+  \item
+    Network of interacting genes turning one another on and off
+  \end{itemize}
+\item
+  Model as \textbf{networks} / \textbf{graphs}
+\end{itemize}
+
+\begin{block}{Networks generalize themes of course}
+
+\begin{itemize}
+\item
+  Dynamics of genetic networks
+\item
+  Contact network: trace people / animals using GPS as they move
+\item
+  How does an epidemic spread via plane travel
+\item
+  Random walk on network: effects of altered gene
+\item
+  How long until two of them meet?
+\end{itemize}
+
+\end{block}
+
+\begin{block}{What is a network?}
+
+\begin{itemize}
+\item
+  A \textbf{network} is the pair \((V, E)\)
+\item
+  \(V\) is set of \textbf{vertices} / \textbf{nodes}
+  \(i = 1, \ldots, N\)
+\item
+  \(E\) is set of edges joining them, e.g.~edge \((3, 5)\) joins nodes 3
+  and 5
+\item
+  Tells us how nodes are connected
+\item
+  \textbf{Directed} (one-way arrows) or \textbf{undirected} (arrows go
+  both ways)
+\item
+  Edges may have \textbf{weights}, e.g.~distance between nodes
+\end{itemize}
+
+\end{block}
+
+\begin{block}{What questions would we like to answer?}
+
+\begin{itemize}
+\item
+  Where can I move from here? (Where am I connected to?)
+\item
+  Where can I move \emph{from} to get here \emph{from}? (Not necessarily
+  the same)
+\item
+  What is \textbf{degree} = number of neighbours
+\item
+  Am I connected to a given node?
+\item
+  What is \textbf{distance} from given node? \(= \infty\) if not
+  connected
+\end{itemize}
+
+\end{block}
+
+\begin{block}{How can we represent a network?}
+
+\begin{itemize}
+\item
+  How encode a network in the computer?
+\item
+  What are possible representations?
+\item
+  I.e. possible data structures
+\end{itemize}
+
+\end{block}
+
+\begin{block}{Possible solutions}
+
+\begin{itemize}
+\item
+  Vector of edges \((i, j)\)
+\item
+  Adjacency matrix: \(A_{ij} = 1\) if \(i\) and \(j\) are connected,
+  \(0\) otherwise
+\item
+  Vector of neighbours of each node
+\item
+  Which is better?
+\item
+  Depends on how \textbf{sparse} the network / matrix is
+\end{itemize}
+
+\end{block}
+
+\begin{block}{Examples of networks:}
+
+\begin{itemize}
+\item
+  Completely connected
+\item
+  Square / cubic grid
+\item
+  \textbf{Erdős--Rényi}: \(N\) nodes, each connected to \(k\) neighbours
+  at random
+\end{itemize}
+
+\end{block}
+
+\begin{block}{Networks in Julia}
+
+\begin{itemize}
+\item
+  Simple implementation:
+\item
+  \texttt{Node} and \texttt{Network} types
+\item
+  \texttt{add\_vertex!} and \texttt{add\_edge!} methods
+\item
+  \(\ge 2\) Julia packages: \texttt{LightGraphs.jl} +
+  \texttt{MatrixNetworks.jl}
+\end{itemize}
+
+\end{block}
+
+\begin{block}{Small-world networks}
+
+\begin{itemize}
+\item
+  Watts--Strogatz 1998
+\item
+  Start from ring with \(N\) nodes, each connected to \(k\) neighbours
+\item
+  Rewire edges at random with probability \(p\), avoiding duplicate
+  edges
+\item
+  What is effect on path length?
+\end{itemize}
+
+\end{block}
+
+\begin{block}{Calculating shortest paths}
+
+\begin{itemize}
+\item
+  Several algorithms to find shortest paths
+\item
+  Shortest path from single node: Dijkstra algorithm
+\item
+  All pairs of shortest path lengths: Floyd--Warshall algorithm
+\end{itemize}
+
+\end{block}
+
+\begin{block}{Floyd--Warshall}
+
+\begin{itemize}
+\item
+  Suppose vertices are \((1, \ldots, n)\)
+\item
+  Consider pair of vertices \(i, j\)
+\item
+  Look at paths \(i \to j\) with intermediate vertices in
+  \((1, \ldots, k)\)
+\item
+  Call \(p\) a path of minimal length / weight
+\item
+  Relate to those using vertices \((1, \ldots, k-1)\) only
+\end{itemize}
+
+\end{block}
+
+\begin{block}{}
+
+\begin{itemize}
+\item
+  If \(k\) is not intermediate vertex of \(p\) then \(p\) is in set of
+  those using only \((1, \ldots, k)\)
+\item
+  If \(k\) is intermediate, write \(p\) as \(i \to k \to j\).
+\item
+  Subpaths are shortest paths
+\end{itemize}
+
+\end{block}
+
+\begin{block}{}
+
+\begin{itemize}
+\item
+  Call \(d_{ij}^k\) the distance of a shortest path from \(i\) to \(j\)
+  with intermediates in \((1, \ldots, k)\).
+\item
+  \(d_{ij}^0 = w_{ij}\), weight / adjacency matrix
+\item
+  \(d_{ij}^k = \min(d_{ij}^{k-1}, \, d_{ik}^{k-1} + d_{kj}^{k-1}\))
+\end{itemize}
+
+\end{block}
+
+\begin{block}{}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{function}\NormalTok{ floyd_warshall(W)}
+\NormalTok{    n = size(W, }\FloatTok{1}\NormalTok{)}
+\NormalTok{    D = deepcopy(W)}
+\NormalTok{    D[D .== }\FloatTok{0}\NormalTok{] .= }\FloatTok{1000}
+    \CommentTok{# D[D .== 1] .= 0}
+
+\NormalTok{    Ds = [deepcopy(D)]}
+
+    \KeywordTok{for}\NormalTok{ k = }\FloatTok{1}\NormalTok{:n}
+\NormalTok{        new_D = zeros(size(D))}
+        \KeywordTok{for}\NormalTok{ i }\KeywordTok{in} \FloatTok{1}\NormalTok{:n, j }\KeywordTok{in} \FloatTok{1}\NormalTok{:n}
+            \KeywordTok{if}\NormalTok{ i == j}
+\NormalTok{                new_D[i, j] = }\FloatTok{0}
+                \KeywordTok{continue}
+            \KeywordTok{end}
+\NormalTok{            new_D[i, j] = min(D[i, j], D[i, k] + D[k, j])}
+        \KeywordTok{end}
+
+\NormalTok{        push!(Ds, deepcopy(new_D))}
+\NormalTok{        D = new_D}
+    \KeywordTok{end}
+
+    \KeywordTok{return}\NormalTok{ Ds}
+\KeywordTok{end}
+
+\NormalTok{floyd_warshall([}\FloatTok{0} \FloatTok{1} \FloatTok{0}\NormalTok{;}
+                \FloatTok{1} \FloatTok{0} \FloatTok{1}\NormalTok{;}
+                \FloatTok{0} \FloatTok{1} \FloatTok{0}\NormalTok{])}
+
+\end{Highlighting}
+\end{Shaded}
+
+\end{block}
+
+\begin{block}{Small-world property}
+
+\begin{itemize}
+\item
+  Distance between 2 arbitrary nodes is ``small'':
+\item
+  How fast does it grow with
+\item
+  Cf. conversation at a party with somebody you don't know -- ``six
+  degrees of separation''
+\end{itemize}
+
+\end{block}
+
+\begin{block}{Preferential attachment:}
+
+\begin{itemize}
+\item
+  Barabási--Albert 1999 (also previously): \textbf{Scale-free} networks
+\item
+  Model for structure of World Wide Web / internet
+\item
+  Suppose node \(i\) has degree (number of neighbours) \(d_i\)
+\item
+  At each step, choose a node \(i\) with probability \(\propto d_i\)
+\item
+  Attach 1 new node there
+\item
+  How choose nodes with probability in this way?
+\end{itemize}
+
+\end{block}
+
+\begin{block}{Implementation}
+
+\begin{itemize}
+\item
+  Choose random integer in range between \(1\) and \(\sum_i d_i\)
+\item
+  Create \emph{cumulative distribution} vector:
+\item
+  \(c_j := \sum_{i=1}^j d_i\)
+\item
+  \texttt{cumsum} in Julia
+\item
+  Search in sorted vector \(c_j\) using bisection search
+\item
+  \texttt{searchsorted} in Julia
+\end{itemize}
+
+\end{block}
+
+\begin{block}{Code}
+
+\begin{verbatim}
+```julia
+function proportional_choice(d::Vector{Int})
+    c = cumsum(d)
+    r = rand(1:c[end])
+
+    return searchsorted(c, r)[1]
+end
+```
+\end{verbatim}
+
+\end{block}
+
+\begin{block}{Random walk on a network}
+
+\begin{itemize}
+\item
+  If at node \(i\), choose one neighbour uniformly and jump there
+\item
+  Where does the walker spend more time?
+\end{itemize}
+
+\end{block}
+
+\begin{block}{Review}
+
+\begin{itemize}
+\item
+  Networks / graphs
+\item
+  Data structures for implementation
+\item
+  Models for social networks: small-world and scale-free
+\end{itemize}
+
+\end{block}
+
+\end{frame}
