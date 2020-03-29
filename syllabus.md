@@ -1,297 +1,186 @@
 # Syllabus and schedule for 6.S083
 
-Problem sets will be due on the Friday after the date specified here, at 5pm.
-The following problem set will be out on the same day.
-
-<table>
-  <tr>
-   <td>
-<ol>
-
-Lecture 1<br>
+01. Mar 30
 Introduction to Julia
+Show individual-based model
+and SIR ODEs
 
-</ol>
-   </td>
-   <td>October 21
-<p>
+Some of things that will come up:
+Visualizing data and statistics
+
+
+02. Visualizing data?
+Plots, Interact
+Makie
+
+02. Apr 1
+Exponential growth
+Discrete time
+Continuous limit
+Plotting and interacting
+
+03. Apr 3
+Probability
+
+
+04. Apr 8
+Random walks and objects
+
+05. Apr 10
+Individual-based models
+(agent-based, rule-based)
+
+06. Apr 12
+Differential equations
+Numerical approximations
+
+07. SIR
+Linear algebra
+
+08. SEIR
+
+
+07. Probability: Scott Sheffield
+
+
+
+October 21
 - PS 0 out
-   </td>
-   <td>- Abstractions: Functions & types
-<p>
+
+- Abstractions: Functions & types
 - Interpreters & compilers
-   </td>
-  </tr>
-  <tr>
-   <td>
-<ol>
 
 Lecture 2
-<br>
 Discrete-time iterative dynamics
 
-
-</ol>
-   </td>
-   <td>October 23
-<p>
+October 23
 - PS 0 due
-<p>
+
 - PS 1 out
-   </td>
-   <td>- Vectors as containers
-<p>
+
+- Vectors as containers
 - Anonymous functions
-<p>
+
 - Visualization
-<p>
+
 - Interactivity
-<p>
+
 - Markdown
-   </td>
-  </tr>
-  <tr>
-   <td>
-<ol>
 
 Lecture 3
-<br>
 Randomness and probability
 
-</ol>
-   </td>
-   <td>October 28
-   </td>
-   <td>- Dictionaries as containers
-<p>
+October 28	- Dictionaries as containers
 - Counting
-<p>
+
 - Sampling
-<p>
+
 - Git and Github
-   </td>
-  </tr>
-  <tr>
-   <td>
-<ol>
 
 Lecture 4
-<br>
 Random walks
 
-</ol>
-   </td>
-   <td>October 30
-<p>
+October 30
 - PS 1 due
-<p>
-- PS 2 out
-   </td>
-   <td>- Building up programs
-<p>
-- Array comprehensions
-<p>
-- Broadcasting
-<p>
-- Vectors of vectors vs matrices
-<p>
-- Type stability and performance
-   </td>
-  </tr>
-  <tr>
-   <td>
-<ol>
 
-Lecture 5 <br>
+- PS 2 out
+
+- Building up programs
+- Array comprehensions
+
+- Broadcasting
+
+- Vectors of vectors vs matrices
+
+- Type stability and performance
+
+Lecture 5
 Monte Carlo
 
-</ol>
-   </td>
-   <td>November 4
-   </td>
-   <td>- Simulation
-<p>
+November 4	- Simulation
 - Rejection sampling
-<p>
-- Iterators
-<p>
-- Individual-based models
-   </td>
-  </tr>
-  <tr>
-   <td>
-<ol>
 
-Lecture 6 <br>
+- Iterators
+
+- Individual-based models
+
+Lecture 6
 Continuous probability distributions
 
-</ol>
-   </td>
-   <td>November 6
-<p>
+November 6
 - PS 2 due
-<p>
+
 - PS 3 out
-   </td>
-   <td>- Histograms
-<p>
+
+- Histograms
 - Standard error of the mean
-   </td>
-  </tr>
-  <tr>
-   <td>
-    No class (Veteran’s Day)
-   </td>
-   <td>November 11
-   </td>
-   <td>
-   </td>
-  </tr>
-  <tr>
-   <td>
-<ol>
 
-
-Lecture 7 <br>
+No class (Veteran’s Day)	November 11
+Lecture 7
 Algorithmic differentiation
 
-</ol>
-   </td>
-   <td>November 13
-   </td>
-   <td>- Abstractions: Types
-<p>
+November 13	- Abstractions: Types
 - Abstract interpretation
-<p>
-- Multiple dispatch  \
-- Unit tests
-   </td>
-  </tr>
-  <tr>
-   <td>
-<ol>
 
-Lecture 8 <br>
+- Multiple dispatch \ - Unit tests
+
+Lecture 8
 Applications of differentiation
 
-</li>
-</ol>
-   </td>
-   <td>November 18
-<p>
+November 18
 - PS 3 due
-<p>
-- PS 4 out
-   </td>
-   <td>- Higher-order functions
-<p>
-- Callable types
-   </td>
-  </tr>
-  <tr>
-   <td>
-<ol>
 
-Lecture 9 <br>
+- PS 4 out
+
+- Higher-order functions
+- Callable types
+
+Lecture 9
 Graphs and algorithms
 
-</ol>
-   </td>
-   <td>November 20
-   </td>
-   <td>- Data structures for graphs
-<p>
+November 20	- Data structures for graphs
 - Search algorithms
-   </td>
-  </tr>
-  <tr>
-   <td>
-<ol>
 
-Lecture 10 <br>
+Lecture 10
 Data and linear regression
 
-</ol>
-   </td>
-   <td>November 25
-<p>
+November 25
 - PS 4 due
-   </td>
-   <td>- Data file formats
-<p>
+
+- Data file formats
 - Reading and writing data
-<p>
+
 - Data frames
-<p>
+
 - Stochastic gradient descent
-   </td>
-  </tr>
-  <tr>
-   <td>
-    Class cancelled (Thanksgiving travel)
 
-   </td>
-   <td>November 27
-<p>
+Class cancelled (Thanksgiving travel)	November 27
 - PS 5 out
-   </td>
-   <td>
-   </td>
-  </tr>
-  <tr>
-   <td>
-<ol>
 
-Lecture 11 <br>
+Lecture 11
 Introduction to machine learning
 
-</ol>
-   </td>
-   <td>December 2
-   </td>
-   <td>- Train/test splitting
-   </td>
-  </tr>
-  <tr>
-   <td>
-<ol>
-
-Lecture 12 <br>
+December 2	- Train/test splitting
+Lecture 12
 Unsupervised learning: Clustering
 
-</ol>
-   </td>
-   <td>December 4
-   </td>
-   <td>- K-means algorithm
-   </td>
-  </tr>
-  <tr>
-   <td>
-<ol>
-
-Lecture 13 <br>
+December 4	- K-means algorithm
+Lecture 13
 Supervised learning: Neural networks
-</li>
-</ol>
-   </td>
-   <td>December 9
-<p>
-- PS 5 due
-   </td>
-   <td>- Stochastic gradient descent
-<p>
-- GPUs
-   </td>
-  </tr>
-  <tr>
-   <td>
-<ol>
 
-Lecture 14 <br>
+December 9
+- PS 5 due
+
+- Stochastic gradient descent
+- GPUs
+
+Lecture 14
 Interval arithmetic methods
-</ol>
-   </td>
-   <td>December 11
-   </td>
-   <td>Floating-point arithmetic
+
+December 11	Floating-point arithmetic
+
+
+Applications to COVID-19
+
+Optimization
+Scott Sheffield / Ipopt

@@ -2,13 +2,15 @@
 theme: Antibes
 mainfont: Helvetica
 monofont: 'Source Code Pro'
-monofontoptions: 'Scale=0.6'
+monofontoptions: 'Scale=0.8'
 
+colorlinks: true
+linkcolor: white
+urlcolor: cyan
 
 header-includes: |
     \usepackage{unicode-math}
 ---
-
 
 
 
