@@ -19,6 +19,9 @@ TBD
 ### Evaluation
 
 *   5 problem sets, 20% each. Lowest score dropped.
+
+*   To pass, you must submit at least 4 problem sets with passing grades
+
 *   No final exam
 
 Problem sets consist of coding and will be submitted online.
