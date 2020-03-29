@@ -1,30 +1,27 @@
-# 6.S083 - Introduction to Computational Thinking
+# 6.S083 - Introduction to Computational Thinking, with applications to modelling COVID-19
 
-## Fall 2019
+## Spring 2020
 
-Welcome to 6.S083! This is an introductory course on Computational Thinking, using the Julia programming language.
-It is being taught at MIT in the 2nd half of the fall 2019 semester.
+Welcome to 6.S083! This is an introductory course on Computational Thinking, using the Julia programming language, with applications to modelling the COVID-19 epidemic.
+It is being taught at MIT in the 2nd half of the spring 2020 semester.
 
 ### Professors
-Visiting professor David P. Sanders ([sandersd@mit.edu](mailto:sandersd@mit.edu)) & Professor Alan Edelman
+Visiting Professor David P. Sanders ([sandersd@mit.edu](mailto:sandersd@mit.edu)) & Professor Alan Edelman
 
 ### Lectures
-MW 1 - 2.30, room 34-301.
-Start date: October 21, 2019.
+MW 3 - 4.30, online. (Registered students will receive a Zoom link.)
+Start date: March 30, 2020.
 
 ### Office hours
-TR 11 - 1, Julia lab, floor 7 of Stata Center (turn left from Gates building elevator)
+TBD
 
 ### Evaluation
 
-*   5 problem sets, 20% each
+*   5 problem sets, 20% each. Lowest score dropped.
 *   No final exam
 
-Problem sets consist of coding and answering questions and will be submitted online.
+Problem sets consist of coding and will be submitted online.
 
-### Piazza
-
-https://piazza.com/class/k2241am36ut5du
 
 
 ### Windows users 
@@ -47,10 +44,6 @@ This will create a new directory called `6.S083` with the matierials.
 git pull
 ```
 This needs to be executed from within the directory. (Use `cd` to change directory.)
-
-### Recordings of classes
-
-(Unedited) screen + audio recordings are available [here](https://www.dropbox.com/sh/dj3d9mcsevubmii/AACn6fF6cVNwI2Sw2UhZtk81a?dl=0).
 
 ### Syllabus
 See [here](syllabus.md) for the course syllabus and schedule.
