@@ -1,6 +1,9 @@
-# Syllabus and schedule for 6.S083
+# Syllabus and schedule for 6.S083 / 18.S190
 
-01. Mar 30
+This is a provisional syllabus for 6.S083 / 18.S190 during spring 2020.
+
+
+## 1. Mar 30
 Introduction to Julia
 Show individual-based model
 and SIR ODEs
