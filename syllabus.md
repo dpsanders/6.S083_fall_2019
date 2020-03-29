@@ -43,7 +43,7 @@ Linear algebra
 08. SEIR
 
 
-07. Probability: Scott Sheffield
+09. Probability
 
 
 
