@@ -10,6 +10,7 @@ Visiting Professor David P. Sanders ([sandersd@mit.edu](mailto:sandersd@mit.edu)
 
 ### Lectures
 MW 3 - 4.30, online. (Registered students will receive a Zoom link.)
+
 Start date: March 30, 2020.
 
 ### Office hours
