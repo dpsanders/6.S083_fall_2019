@@ -2,8 +2,8 @@
 
 This is a working syllabus for 6.S083 / 18.S190 during spring 2020.
 
-|Lecture|||
-|--|--|--|
+|Lecture| Class Video | Class Notebook | Other Resources |
+|--|--|--|--|
 | 1. Analyzing covid-19 data   |        |
   <ul>
     <li>
