@@ -2,7 +2,7 @@
 
 ## Spring 2020
 
-** Please see https://github.com/mitmath/6S083 for the Spring 2020 version of the course **
+**Please see https://github.com/mitmath/6S083 for the Spring 2020 version of the course**
 
 See the branch `fall_2019` here for the fall 2019 version.
 
