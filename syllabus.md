@@ -1,33 +1,47 @@
 # Syllabus and schedule for 6.S083 / 18.S190
 
-This is a provisional syllabus for 6.S083 / 18.S190 during spring 2020.
+This is a working syllabus for 6.S083 / 18.S190 during spring 2020.
 
-<ul>
-  <li>
-1. Analysing data
-  </li>
-  <li>
+|Lecture|||
+|--|--|--|
+| 1. Analyzing data   |        |
+  <ul>
+    <li>
 2. Modelling exponential growth
     </li>
-  <li>
+  </ul>
+  <ul>
+    <li>
 3. Probability
     </li>
-  <li>
+  </ul>
+  <ul>
+    <li>
 4. Individual-based models
     </li>
-  <li>
+  </ul>
+  <ul>
+    <li>
 5. Differential equations
     </li>
-  <li>
+  </ul>
+  <ul>
+    <li>
 6. SIR models
-    </li>
-  <li>
+  </li>
+  </ul>
+  <ul>
+    <li>
 7. Networks
-    </li>
-  <li>
+   </li>
+  </ul>
+  <ul>
+    <li>
 8. Optimization
-    </li>
-  <li>
+   </li>
+  </ul>
+  <ul>
+    <li>
 9. Fitting to data
   </li>
-<ul>
+</ul>
