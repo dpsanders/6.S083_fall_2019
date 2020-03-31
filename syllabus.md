@@ -4,7 +4,7 @@ This is a working syllabus for 6.S083 / 18.S190 during spring 2020.
 
 |Lecture|||
 |--|--|--|
-| 1. Analyzing data   |        |
+| 1. Analyzing covid-19 data   |        |
   <ul>
     <li>
 2. Modelling exponential growth
